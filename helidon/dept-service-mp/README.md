@@ -48,13 +48,15 @@ curl -X GET http://localhost:8080/departments
 ## Build the Docker Image
 
 ```
-docker build -t dept-service-mp target
+docker build --no-cache -t dept-service-mp target
 ```
 
 ## Start the application with Docker
 
 ```
 docker run --rm -p 8080:8080 dept-service-mp:latest
+
+docker run -i -t dept-service-mp:latest /bin/sh
 ```
 
 Exercise the application as described above
