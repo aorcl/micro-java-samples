@@ -69,7 +69,7 @@ kubectl proxy --port 8888 &
 
 ## pushing an image to OCIR
 
-Create auth token in OCI's user (alexey.dolganov@oracle.com)
+Create auth token in OCI's user 
 
 ## log into OCIR from admin's shell:
 
@@ -77,7 +77,8 @@ Create auth token in OCI's user (alexey.dolganov@oracle.com)
 $ docker login lhr.ocir.io
 ```
 
-user: oracleisv/alexey.dolganov@oracle.com
+user: oracleisv/my_user
+
 password: <auth token>
 
 ```
