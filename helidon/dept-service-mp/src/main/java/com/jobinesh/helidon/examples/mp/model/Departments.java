@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Department JPA entity
- * @author Jobinesh
+ * @author Jobinesh, AORCL
  */
 @Entity
 @Table(name = "TRAININGDEPARTMENTS")
