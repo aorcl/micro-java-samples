@@ -46,7 +46,7 @@ class MainTest {
         Client client = ClientBuilder.newClient();
 
         JsonArray jsonObject = client
-                .target(getConnectionString("/departments"))
+                .target(getConnectionString("/BudgetApi/departments"))
                 .request()
                 .get(JsonArray.class);
         Assertions.assertNotNull(jsonObject);
