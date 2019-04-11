@@ -25,76 +25,50 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Jobinesh
  */
 @Entity
-@Table(name = "DEPARTMENTS")
+@Table(name = "TRAININGDEPARTMENTS")
 @XmlRootElement
 
 @NamedQueries({
-    @NamedQuery(name = "Departments.findAll", query = "SELECT d FROM Departments d"),
-    @NamedQuery(name = "Departments.findByDepartmentId", query = "SELECT d FROM Departments d WHERE d.departmentId = :departmentId"),
-    @NamedQuery(name = "Departments.findByDepartmentName", query = "SELECT d FROM Departments d WHERE d.departmentName = :departmentName"),
-    @NamedQuery(name = "Departments.findByManagerId", query = "SELECT d FROM Departments d WHERE d.managerId = :managerId"),
-    @NamedQuery(name = "Departments.findByLocationId", query = "SELECT d FROM Departments d WHERE d.locationId = :locationId")})
+    @NamedQuery(name = "Departments.findAll", query = "SELECT d FROM TrainingDepartments d"),
+    @NamedQuery(name = "Departments.findByDepartmentId", query = "SELECT d FROM TrainingDepartments d WHERE d.DepartmentId = :departmentId")})
 public class Departments implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DEPARTMENT_ID")
-    private Short departmentId;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "DEPARTMENT_NAME")
-    @XmlElement(name = "departmentName")
-    private String departmentName;    
-    @Column(name = "MANAGER_ID")
-    private Integer managerId;
-    @Column(name = "LOCATION_ID")
-    private Short locationId;
+    @Column(name = "DEPARTMENTID")
+    private String departmentId;
+    @Column(name = "TRAININGBUDGET")
+    private Short trainingBudget;
 
     public Departments() {
     }
 
-    public Departments(Short departmentId) {
+    public Departments(String departmentId) {
         this.departmentId = departmentId;
     }
 
-    public Departments(Short departmentId, String departmentName) {
+    public Departments(String departmentId, Short trainingBudget) {
         this.departmentId = departmentId;
-        this.departmentName = departmentName;
+        this.trainingBudget = trainingBudget;
     }
 
-    public Short getDepartmentId() {
+    public String getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(Short departmentId) {
+    public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    public Short getTrainingBudget() {
+        return trainingBudget;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setTrainingBudget(Short trainingBudget) {
+        this.trainingBudget = trainingBudget;
     }
 
-    public Integer getManagerId() {
-        return managerId;
-    }
-
-    public void setManagerId(Integer managerId) {
-        this.managerId = managerId;
-    }
-
-    public Short getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(Short locationId) {
-        this.locationId = locationId;
-    }
 
     @Override
     public int hashCode() {
@@ -118,7 +92,7 @@ public class Departments implements Serializable {
 
     @Override
     public String toString() {
-        return "Departments{" + "departmentId=" + departmentId + ", departmentName=" + departmentName + ", managerId=" + managerId + ", locationId=" + locationId + '}';
+        return "Departments{" + "departmentId=" + departmentId + ", trainingBudget=" + trainingBudget + '}';
     }
 
    
