@@ -39,10 +39,10 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("/departments")
 @RequestScoped
-public class DepartmentResource {
+public class BudgetApiResource {
 
     private final DataSource dataSource = null;
-    private static final Logger logger = Logger.getLogger(DepartmentResource.class.getName());
+    private static final Logger logger = Logger.getLogger(BudgetApiResource.class.getName());
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

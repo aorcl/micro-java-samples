@@ -29,10 +29,10 @@ import io.helidon.common.CollectionsHelper;
  */
 @ApplicationScoped
 @ApplicationPath("/")
-public class DepartmentApplication extends Application {
+public class BudgetApiApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
-        return CollectionsHelper.setOf(DepartmentResource.class);
+        return CollectionsHelper.setOf(BudgetApiResource.class);
     }
 }
