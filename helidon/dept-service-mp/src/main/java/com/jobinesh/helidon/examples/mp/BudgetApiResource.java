@@ -35,7 +35,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Jobinesh
+ * @author Jobinesh, AORCL
  */
 @Path("/departments")
 @RequestScoped
