@@ -70,15 +70,16 @@ kubectl create -f target/app.yaml               # Deploy application
 kubectl get service dept-service-mp  # Verify deployed service
 ```
 
+## Kube Dashboard:
 ```
 kubectl proxy --port 8888 &
 ```
 
-pushing an image to OCIR
+## pushing an image to OCIR
 
 Create auth token in OCI's user (alexey.dolganov@oracle.com)
 
-log into OCIR from admin's shell:
+## log into OCIR from admin's shell:
 
 ```
 $ docker login lhr.ocir.io
