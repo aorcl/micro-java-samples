@@ -10,42 +10,42 @@ import javax.ws.rs.FormParam;
 /**
  * DepartmentFormBean used as @BeanParam in DepartmentService class
  *
- * @author Jobinesh
+ * @author Jobinesh, AORCL
  */
 public class DepartmentFormBean {
 
     @FormParam("departmentId")
-    private short departmentId;
+    private String departmentId;
 
-    @FormParam("departmentName")
-    private String departmentName;
+    @FormParam("trainingBudget")
+    private Short trainingBudget;
 
     /**
      * @return the departmentId
      */
-    public short getDepartmentId() {
+    public String getDepartmentId() {
         return departmentId;
     }
 
     /**
      * @param departmentId the departmentId to set
      */
-    public void setDepartmentId(short departmentId) {
+    public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
     }
 
     /**
-     * @return the departmentName
+     * @return the trainingBudget
      */
-    public String getDepartmentName() {
-        return departmentName;
+    public Short getTrainingBudget() {
+        return trainingBudget;
     }
 
     /**
      * @param departmentName the departmentName to set
      */
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setTrainingBudget(Short trainingBudget) {
+        this.trainingBudget = trainingBudget;
     }
 
 }

@@ -44,11 +44,6 @@ public class DepartmentResource {
     private final DataSource dataSource = null;
     private static final Logger logger = Logger.getLogger(DepartmentResource.class.getName());
 
-
-    /* public DepartmentResource(@Named("example") final DataSource dataSource) {
-        super();
-        this.dataSource = Objects.requireNonNull(dataSource);
-    }*/
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Departments> getAllDepartments() {
@@ -96,17 +91,17 @@ public class DepartmentResource {
      * Creates a department. This method demonstrates @FormParam
      *
      * @param departmentId
-     * @param departmentName
+     * @param trainingBudget
      */
     @POST
     @Path("form")
-    public void createDepartmnet(
-            @FormParam("departmentId") short departmentId,
-            @FormParam("departmentName") String departmentName) {
+    public void createDepartment(
+            @FormParam("departmentId") String departmentId,
+            @FormParam("trainingBudget") Short trainingBudget) {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
         Departments entity = new Departments();
         entity.setDepartmentId(departmentId);
-        entity.setDepartmentName(departmentName);
+        entity.setTrainingBudget(trainingBudget);
         em.getTransaction().begin();
         em.persist(entity);
         commitTxn(em);
@@ -119,9 +114,9 @@ public class DepartmentResource {
      */
     @POST
     @Path("form/bean")
-    public void createDepartmnet(@BeanParam DepartmentFormBean deptBean) {
-        createDepartmnet(deptBean.getDepartmentId(),
-                deptBean.getDepartmentName());
+    public void createDepartment(@BeanParam DepartmentFormBean deptBean) {
+        createDepartment(deptBean.getDepartmentId(),
+                deptBean.getTrainingBudget());
     }
 
     /**
@@ -133,7 +128,7 @@ public class DepartmentResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void editDepartment(@PathParam("id") Short id, Departments entity) {
+    public void editDepartment(@PathParam("id") String id, Departments entity) {
         logger.log(Level.INFO, "Departments: " + entity.toString());
 
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
@@ -149,7 +144,7 @@ public class DepartmentResource {
      */
     @DELETE
     @Path("{id}")
-    public void removeDepartment(@PathParam("id") Short id) {
+    public void removeDepartment(@PathParam("id") String id) {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
         Departments entity = em.find(Departments.class, id);
 
@@ -185,7 +180,7 @@ public class DepartmentResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Departments findDepartment(@PathParam("id") Short id) {
+    public Departments findDepartment(@PathParam("id") String id) {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
         return em.find(Departments.class, id);
     }
