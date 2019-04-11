@@ -1,6 +1,6 @@
 CREATE TABLE [TrainingDepartments] ( 
 [DepartmentId] NVARCHAR(256)  NOT NULL PRIMARY KEY, 
-[DepartmentBudget] INTEGER NULL
+[TrainingBudget] INTEGER NULL
 ); 
 
 CREATE TABLE [TrainingUsers] ( 
@@ -25,6 +25,12 @@ CONSTRAINT dept_name_nn NOT NULL
 
 CREATE UNIQUE INDEX dept_id_pk
 ON departments (department_id);
+
+CREATE VIEW TrainingUsersBudgets (UserId, DepartmentId, TrainingBudget)
+AS SELECT UserId, DepartmentId, TrainingBudget
+FROM TrainingUsers INNER JOIN TrainingDepartments
+ON TrainingUsers.DepartmentId = TrainingDepartments.DepartmentId;
+
 
 insert into TrainingDepartments values('10', 10000);
 insert into TrainingDepartments values('20', 20000);
