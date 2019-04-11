@@ -17,6 +17,13 @@
 #FROM openjdk:8-jre-slim
 FROM openjdk:8-jre-alpine
 
+RUN apk add --update sqlite
+RUN mkdir /sqlite
+COPY createtables.sql /sqlite/createtables.sql
+WORKDIR /sqlite
+ENTRYPOINT sqlite3 demodb
+ENTRYPOINT sqlite3 demodb < createtables.sql
+
 RUN mkdir /app
 COPY libs /app/libs
 COPY ${project.artifactId}.jar /app
