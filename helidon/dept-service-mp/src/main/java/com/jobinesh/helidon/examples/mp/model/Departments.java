@@ -25,20 +25,20 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Jobinesh, AORCL
  */
 @Entity
-@Table(name = "TRAININGDEPARTMENTS")
+@Table(name = "TrainingDepartments")
 @XmlRootElement
 
 @NamedQueries({
     @NamedQuery(name = "Departments.findAll", query = "SELECT d FROM TrainingDepartments d"),
-    @NamedQuery(name = "Departments.findByDepartmentId", query = "SELECT d FROM TrainingDepartments d WHERE d.DepartmentId = :departmentId")})
+    @NamedQuery(name = "Departments.findByDepartmentId", query = "SELECT d FROM TrainingDepartments d WHERE d.departmentId = :departmentId")})
 public class Departments implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DEPARTMENTID")
+    @Column(name = "departmentId")
     private String departmentId;
-    @Column(name = "TRAININGBUDGET")
+    @Column(name = "trainingBudget")
     private Short trainingBudget;
 
     public Departments() {
