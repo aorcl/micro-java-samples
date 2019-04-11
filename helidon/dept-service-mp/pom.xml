@@ -129,6 +129,7 @@
                                     <filtering>true</filtering>
                                     <includes>
                                         <include>Dockerfile</include>
+                                        <include>createtables.sql</include>
                                     </includes>
                                 </resource>
                                 <resource>
