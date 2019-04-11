@@ -4,7 +4,7 @@
         <class>com.jobinesh.helidon.examples.mp.model.Departments</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:/home/opc/sqlite/demodb"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:/sqlite/demodb"/>
             <!-- 
           <property name="javax.persistence.jdbc.user" value="test" />
           <property name="javax.persistence.jdbc.password" value="test" />
