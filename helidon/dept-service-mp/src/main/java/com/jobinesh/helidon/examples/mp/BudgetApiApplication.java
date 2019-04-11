@@ -28,7 +28,7 @@ import io.helidon.common.CollectionsHelper;
  * Simple Application that produces a greeting message.
  */
 @ApplicationScoped
-@ApplicationPath("/")
+@ApplicationPath("/BudgetApi")
 public class BudgetApiApplication extends Application {
 
     @Override
