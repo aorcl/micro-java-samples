@@ -34,7 +34,7 @@ apiVersion: extensions/v1beta1
 metadata:
   name: ${project.artifactId}
 spec:
-  replicas: 5
+  replicas: 1
   template:
     metadata:
       labels:

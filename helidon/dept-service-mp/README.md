@@ -92,3 +92,4 @@ password: <auth token>
 $ docker tag dept-service-mp:latest lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:latest
 $ docker push lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:latest
 ```
+
