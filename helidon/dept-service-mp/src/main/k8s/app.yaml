@@ -21,7 +21,7 @@ metadata:
   labels:
     app: ${project.artifactId}
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: ${project.artifactId}
   ports:
@@ -43,8 +43,10 @@ spec:
     spec:
       containers:
       - name: ${project.artifactId}
-        image: ${project.artifactId}
+        image: lhr.ocir.io/oracleisv/ado_workshops/${project.artifactId}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+      - name: ocirsecret
 ---

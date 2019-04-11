@@ -69,3 +69,25 @@ kubectl get pods                             # Verify connectivity to cluster
 kubectl create -f target/app.yaml               # Deploy application
 kubectl get service dept-service-mp  # Verify deployed service
 ```
+
+```
+kubectl proxy --port 8888 &
+```
+
+pushing an image to OCIR
+
+Create auth token in OCI's user (alexey.dolganov@oracle.com)
+
+log into OCIR from admin's shell:
+
+```
+$ docker login lhr.ocir.io
+```
+
+user: oracleisv/alexey.dolganov@oracle.com
+password: <auth token>
+
+```
+$ docker tag dept-service-mp:latest lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:latest
+$ docker push lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:latest
+```
