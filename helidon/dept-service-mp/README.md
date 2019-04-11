@@ -61,14 +61,6 @@ docker run -i -t dept-service-mp:latest /bin/sh
 
 Exercise the application as described above
 
-## Deploy the application to Kubernetes
-
-```
-kubectl cluster-info                         # Verify which cluster
-kubectl get pods                             # Verify connectivity to cluster
-kubectl create -f target/app.yaml               # Deploy application
-kubectl get service dept-service-mp  # Verify deployed service
-```
 
 ## Kube Dashboard:
 ```
@@ -91,4 +83,15 @@ password: <auth token>
 ```
 $ docker tag dept-service-mp:latest lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:latest
 $ docker push lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:latest
+```
+
+
+## Deploy the application to Kubernetes
+
+```
+kubectl cluster-info                         # Verify which cluster
+kubectl get pods                             # Verify connectivity to cluster
+#kubectl create -f target/app.yaml               # Deploy application
+kubectl apply -f target/app.yaml               # Deploy application
+kubectl get service dept-service-mp  # Verify deployed service
 ```
