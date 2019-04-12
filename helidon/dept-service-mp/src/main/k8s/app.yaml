@@ -43,8 +43,7 @@ spec:
     spec:
       containers:
       - name: ${project.artifactId}
-        image: lhr.ocir.io/oracleisv/ado_workshops/${project.artifactId}
-        imagePullPolicy: IfNotPresent
+        image: lhr.ocir.io/oracleisv/ado_workshops/${project.artifactId}:v2
         ports:
         - containerPort: 8080
       imagePullSecrets:

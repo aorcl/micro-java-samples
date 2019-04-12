@@ -39,9 +39,9 @@ java -jar target/dept-service-mp.jar
 ```
 curl -X POST -H "Content-Type: application/json" \
 --data '{"departmentId":"Shipping","trainingBudget":700}' \
-http://localhost:8080/departments
+http://localhost:8080/BudgetApi/departments
 
-curl -X GET http://localhost:8080/departments
+curl -X GET http://localhost:8080/BudgetApi/departments
 
 ```
 
