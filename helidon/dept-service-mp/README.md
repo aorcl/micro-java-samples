@@ -77,7 +77,7 @@ Create auth token in OCI's user
 $ docker login lhr.ocir.io
 ```
 
-user: oracleisv/my_user
+user: <tenancy>/<my_user>
 
 password: <auth token>
 
