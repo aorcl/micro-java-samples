@@ -37,7 +37,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Jobinesh, AORCL
  */
-@Path("/departments")
+@Path("/BudgetApi/departments")
 //@RequestScoped
 public class BudgetApiResource {
 
