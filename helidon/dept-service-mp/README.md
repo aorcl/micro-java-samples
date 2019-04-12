@@ -92,7 +92,7 @@ $ docker push lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:v3
 ```
 kubectl cluster-info                         # Verify which cluster
 kubectl get pods                             # Verify connectivity to cluster
-#kubectl create -f target/app.yaml               # Deploy application
-kubectl apply -f target/app.yaml               # Deploy application
+kubectl create -f target/app.yaml               # Deploy application
+# kubectl apply -f target/app.yaml               # Deploy application
 kubectl get service dept-service-mp  # Verify deployed service
 ```
