@@ -6,14 +6,15 @@
 package com.jobinesh.helidon.examples.mp;
 
 import com.jobinesh.helidon.examples.mp.model.Departments;
+import com.jobinesh.helidon.examples.mp.model.TrainingUsers;
 import com.jobinesh.helidon.examples.mp.model.PersistenceManager;
-import javax.enterprise.context.RequestScoped;
+//import javax.enterprise.context.RequestScoped;
 import javax.json.Json;
 import javax.json.JsonObject;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.sql.DataSource;
+//import java.sql.Connection;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
+//import javax.sql.DataSource;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -227,6 +228,121 @@ public class BudgetApiResource {
 
         return departments;
     }
+
+
+    // TrainingUsers API
+
+    @GET
+    @Path("/users")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<TrainingUsers> getAllTrainingUsers() {
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        javax.persistence.criteria.CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(TrainingUsers.class));
+        List<TrainingUsers> TrainingUsers = em.createQuery(cq).getResultList();
+        System.out.println("users:" + TrainingUsers);
+        return TrainingUsers;
+    }
+
+    /**
+     * Creates TrainingUsers entity
+     *
+     * @param entity
+     */
+    @POST
+    @Path("/users")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createTrainingUser(TrainingUsers entity) {
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(entity);
+        commitTxn(em);
+    }
+
+    /**
+     * Get total users count
+     *
+     * @return
+     */
+    @GET
+    @Path("users/count")
+    @Produces("text/plain")
+    public int countTrainingUsersREST() {
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        javax.persistence.criteria.CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        javax.persistence.criteria.Root<TrainingUsers> rt = cq.from(TrainingUsers.class);
+        cq.select(em.getCriteriaBuilder().count(rt));
+        javax.persistence.Query q = em.createQuery(cq);
+        return ((Long) q.getSingleResult()).intValue();
+
+    }
+
+    /**
+     * Creates a user. This method demonstrates @FormParam
+     *
+     * @param userId
+     * @param departmentID
+     */
+    @POST
+    @Path("users/form")
+    public void createTrainingUser(
+            @FormParam("userId") String userId,
+            @FormParam("departmentID") String departmentID) {
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        TrainingUsers entity = new TrainingUsers();
+        entity.setUserId(userId);
+        entity.setDepartmentId(departmentID);
+        em.getTransaction().begin();
+        em.persist(entity);
+        commitTxn(em);
+    }
+
+    /**
+     * Creates a user This method demonstrates @BeanParam
+     *
+     * @param userBean
+     */
+    @POST
+    @Path("users/form/bean")
+    public void createTrainingUser(@BeanParam TrainingUserFormBean userBean) {
+        createTrainingUser(userBean.getUserId(),
+        userBean.getUserId());
+    }
+
+    /**
+     * Modifies user
+     *
+     * @param id
+     * @param entity
+     */
+    @PUT
+    @Path("users/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void editTrainingUser(@PathParam("id") String id, TrainingUsers entity) {
+        logger.log(Level.INFO, "TrainingUsers: " + entity.toString());
+
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(entity);
+        commitTxn(em);
+    }
+
+
+    /**
+     * Finds a user by id
+     *
+     * @param id
+     * @return
+     */
+    @GET
+    @Path("users/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public TrainingUsers findTrainingUser(@PathParam("id") String id) {
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        return em.find(TrainingUsers.class, id);
+    }
+
+
 
     private void commitTxn(EntityManager em) {
         em.getTransaction().commit();

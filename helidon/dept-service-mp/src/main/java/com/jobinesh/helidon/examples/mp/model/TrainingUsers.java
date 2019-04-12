@@ -64,7 +64,7 @@ public class TrainingUsers implements Serializable {
         return departmentID;
     }
 
-    public void setDepartmentID(String departmentID) {
+    public void setDepartmentId(String departmentID) {
         this.departmentID = departmentID;
     }
 
