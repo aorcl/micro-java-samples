@@ -45,12 +45,12 @@ class MainTest {
 
         Client client = ClientBuilder.newClient();
 
-        /*JsonArray jsonObject = client
+        JsonArray jsonObject = client
                 .target(getConnectionString("/BudgetApi/departments"))
                 .request()
-                .get(JsonArray.class);*/
-        //Assertions.assertNotNull(jsonObject);*/
-        Assertions.assertNotNull(true); //hack
+                .get(JsonArray.class);
+        Assertions.assertNotNull(jsonObject);
+        //Assertions.assertNotNull(true); //hack
 
     }
 
