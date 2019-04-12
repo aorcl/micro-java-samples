@@ -41,7 +41,7 @@ public final class Main {
 
         Server server = startServer();
 
-        System.out.println("http://localhost:" + server.getPort() + "/departments");
+        System.out.println("http://localhost:" + server.getPort() + "/BudgetApi/departments");
     }
 
     /**
