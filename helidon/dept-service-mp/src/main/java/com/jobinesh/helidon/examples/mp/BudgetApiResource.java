@@ -10,10 +10,10 @@ import com.jobinesh.helidon.examples.mp.model.PersistenceManager;
 import javax.enterprise.context.RequestScoped;
 import javax.json.Json;
 import javax.json.JsonObject;
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.sql.DataSource;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +37,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Jobinesh, AORCL
  */
-@Path("/BudgetApi/departments")
+@Path("/BudgetApi")
 //@RequestScoped
 public class BudgetApiResource {
 
@@ -45,6 +45,7 @@ public class BudgetApiResource {
     private static final Logger logger = Logger.getLogger(BudgetApiResource.class.getName());
 
     @GET
+    @Path("/departments")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Departments> getAllDepartments() {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
@@ -61,6 +62,7 @@ public class BudgetApiResource {
      * @param entity
      */
     @POST
+    @Path("/departments")
     @Consumes(MediaType.APPLICATION_JSON)
     public void createDepartment(Departments entity) {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
@@ -75,7 +77,7 @@ public class BudgetApiResource {
      * @return
      */
     @GET
-    @Path("count")
+    @Path("departments/count")
     @Produces("text/plain")
     public int countREST() {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
@@ -94,7 +96,7 @@ public class BudgetApiResource {
      * @param trainingBudget
      */
     @POST
-    @Path("form")
+    @Path("departments/form")
     public void createDepartment(
             @FormParam("departmentId") String departmentId,
             @FormParam("trainingBudget") Short trainingBudget) {
@@ -113,7 +115,7 @@ public class BudgetApiResource {
      * @param deptBean
      */
     @POST
-    @Path("form/bean")
+    @Path("departments/form/bean")
     public void createDepartment(@BeanParam DepartmentFormBean deptBean) {
         createDepartment(deptBean.getDepartmentId(),
                 deptBean.getTrainingBudget());
@@ -126,7 +128,7 @@ public class BudgetApiResource {
      * @param entity
      */
     @PUT
-    @Path("{id}")
+    @Path("departments/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void editDepartment(@PathParam("id") String id, Departments entity) {
         logger.log(Level.INFO, "Departments: " + entity.toString());
@@ -143,7 +145,7 @@ public class BudgetApiResource {
      * @param id
      */
     @DELETE
-    @Path("{id}")
+    @Path("departments/{id}")
     public void removeDepartment(@PathParam("id") String id) {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
         Departments entity = em.find(Departments.class, id);
@@ -161,7 +163,7 @@ public class BudgetApiResource {
      * @return
      */
     @GET
-    @Path("{name: [a-zA-Z][a-zA-Z_0-9]}")
+    @Path("departments/{name: [a-zA-Z][a-zA-Z_0-9]}")
     @Produces(MediaType.APPLICATION_JSON)
     public Departments findDepartmentByName(@PathParam("name") String name) {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
@@ -178,7 +180,7 @@ public class BudgetApiResource {
      * @return
      */
     @GET
-    @Path("{id}")
+    @Path("departments/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Departments findDepartment(@PathParam("id") String id) {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
@@ -193,7 +195,7 @@ public class BudgetApiResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("query")
+    @Path("departments/query")
     public List<Departments> findAllDepartmentsWithQueryParam(@QueryParam("name") String name) {
         //Find all departments from the data store
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
@@ -213,7 +215,7 @@ public class BudgetApiResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("matrix")
+    @Path("departments/matrix")
     public List<Departments> findAllDepartmentsWithMatrixParam(@MatrixParam("name") String name) {
         //Find all departments from the data store
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
