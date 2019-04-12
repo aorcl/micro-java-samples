@@ -82,8 +82,8 @@ user: oracleisv/my_user
 password: <auth token>
 
 ```
-$ docker tag dept-service-mp:latest lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:latest
-$ docker push lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:latest
+$ docker tag dept-service-mp:latest lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:v3
+$ docker push lhr.ocir.io/oracleisv/ado_workshops/dept-service-mp:v3
 ```
 
 
