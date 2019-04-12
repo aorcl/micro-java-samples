@@ -10,10 +10,10 @@ import com.jobinesh.helidon.examples.mp.model.PersistenceManager;
 import javax.enterprise.context.RequestScoped;
 import javax.json.Json;
 import javax.json.JsonObject;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.sql.DataSource;
+//import java.sql.Connection;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
+//import javax.sql.DataSource;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,10 +38,10 @@ import javax.ws.rs.core.MediaType;
  * @author Jobinesh, AORCL
  */
 @Path("/departments")
-@RequestScoped
+//@RequestScoped
 public class BudgetApiResource {
 
-    private final DataSource dataSource = null;
+    //private final DataSource dataSource = null;
     private static final Logger logger = Logger.getLogger(BudgetApiResource.class.getName());
 
     @GET
